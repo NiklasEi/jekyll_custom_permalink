@@ -19,7 +19,7 @@ module JekyllCustomPermalink
             raise CustomPermalinkSetupError, "The custom placeholders need to be an array! Check the settings of your '#{doc.collection.label}' collection."
           end
           def doc.url_template
-            @custom_url_template ||= collection.metadata.fetch("custom_permalink_placeholders").inject((collection.url_template){|o,m| o.sub ":" + m, data[m].to_s.parameterize}
+            @custom_url_template ||= collection.metadata.fetch("custom_permalink_placeholders").inject(collection.url_template){|o,m| o.sub ":" + m, data[m].to_s.parameterize}
           end
         rescue KeyError
           # "custom_permalink_placeholders"
